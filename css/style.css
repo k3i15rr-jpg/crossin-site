@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Anton&display=swap');
 
 /* ---------- Design Tokens ---------- */
 :root {
@@ -20,6 +20,7 @@
   --font-sans: "Noto Sans JP", sans-serif;
   --font-display: "Cormorant Garamond", serif;
   --font-en: "Jost", sans-serif;
+  --font-impact: "Anton", "Jost", sans-serif;
 
   --container: 1180px;
   --ease: cubic-bezier(.22, .61, .36, 1);
@@ -226,19 +227,45 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: radial-gradient(120% 120% at 15% 15%, var(--green-700) 0%, var(--green-900) 55%, var(--green-950) 100%);
+  background:
+    radial-gradient(160% 120% at 82% -10%, rgba(217,189,140,.10) 0%, transparent 45%),
+    radial-gradient(120% 120% at 15% 110%, var(--green-700) 0%, var(--green-900) 55%, var(--green-950) 100%);
   color: var(--white);
   overflow: hidden;
   padding-top: 110px;
 }
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.hero-wordmark {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-impact);
+  font-weight: 400;
+  font-size: clamp(7rem, 26vw, 22rem);
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(217,189,140,0.16);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
 .hero-mark {
   position: absolute;
-  right: -14vw;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 62vw;
-  max-width: 900px;
-  opacity: 0.14;
+  right: -16vw;
+  bottom: -18vw;
+  top: auto;
+  transform: none;
+  width: 46vw;
+  max-width: 640px;
+  opacity: 0.1;
   pointer-events: none;
 }
 .hero-mark svg, .hero-mark img { width: 100%; height: auto; display: block; }
@@ -265,11 +292,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-eyebrow::before { content: ""; width: 42px; height: 1px; background: var(--gold-400); }
 .hero-title {
   font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: clamp(2.3rem, 5.6vw, 4.6rem);
-  line-height: 1.42;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
   max-width: 15em;
+  text-shadow: 0 8px 40px rgba(0,0,0,.35);
 }
 .hero-sub {
   margin-top: 34px;
@@ -360,51 +388,64 @@ section { position: relative; }
 }
 
 /* ---------- Business Cards (index teaser) ---------- */
-.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.pillars { display: flex; flex-direction: column; gap: 22px; }
 .pillar-card {
   position: relative;
   border-radius: 22px;
   overflow: hidden;
-  background: var(--green-800);
+  background: linear-gradient(120deg, var(--green-700) 0%, var(--green-950) 80%);
   color: var(--white);
-  padding: 40px 32px;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  padding: 56px 60px;
+  min-height: 320px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 40px;
   transition: transform .5s var(--ease), box-shadow .5s var(--ease);
 }
-.pillar-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(16,51,31,0.28); }
+.pillar-card.dining { background: linear-gradient(120deg, var(--green-700) 0%, var(--green-950) 80%); }
+.pillar-card.entertainment { background: linear-gradient(120deg, var(--green-950) 0%, #050f0a 85%); }
+.pillar-card.hr { background: linear-gradient(120deg, var(--green-600) 0%, var(--green-950) 80%); }
+.pillar-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 82% 30%, black, transparent 70%);
+  pointer-events: none;
+}
+.pillar-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(16,51,31,0.28); }
 .pillar-card .num {
-  position: absolute; top: 30px; right: 32px;
+  position: absolute; top: 30px; right: 36px;
   font-family: var(--font-en);
   font-size: 0.78rem;
+  letter-spacing: 0.16em;
   color: rgba(255,255,255,0.5);
-}
-.pillar-card .glyph {
-  position: absolute; top: -30px; right: -30px;
-  width: 200px; height: 200px;
-  opacity: 0.1;
+  z-index: 1;
 }
 .pillar-card .pillar-en {
-  font-family: var(--font-en);
-  font-weight: 600;
-  font-size: 1.85rem;
-  letter-spacing: 0.06em;
-  color: var(--gold-400);
-  margin-bottom: 6px;
+  font-family: var(--font-impact);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
 }
 .pillar-card h3 {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 14px;
+  color: var(--gold-400);
+  margin-bottom: 4px;
+  position: relative; z-index: 1;
 }
-.pillar-card p { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.9; margin-bottom: 22px; }
-.pillar-card .btn-line { align-self: flex-start; color: var(--gold-400); }
-.pillar-card.alt { background: var(--cream-100); color: var(--ink-900); }
-.pillar-card.alt p { color: var(--ink-700); }
-.pillar-card.alt .btn-line { color: var(--green-800); }
+.pillar-card p { font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.9; margin-bottom: 24px; position: relative; z-index: 1; }
+.pillar-card .btn-line { align-self: flex-start; color: var(--gold-400); position: relative; z-index: 1; }
+.pillar-card .pillar-text { position: relative; z-index: 1; }
 
 /* ---------- Brand Showcase ---------- */
 .brand-row {
@@ -485,6 +526,10 @@ a.news-item:hover { padding-left: 12px; }
   overflow: hidden;
 }
 .page-hero .hero-mark { right: -18vw; width: 50vw; opacity: .12; }
+.page-hero .hero-wordmark {
+  left: auto; right: -0.03em; top: 58%; transform: translateY(-50%);
+  font-size: clamp(5rem, 18vw, 14rem);
+}
 .page-hero .crumb { font-family: var(--font-en); font-size: 0.76rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); margin-bottom: 22px; }
 .page-hero .crumb a:hover { color: var(--gold-400); }
 .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 600; letter-spacing: 0.02em; }
@@ -526,19 +571,69 @@ a.news-item:hover { padding-left: 12px; }
 .info-table td a { color: var(--green-800); border-bottom: 1px solid var(--green-800); }
 
 /* ---------- Business detail sections ---------- */
-.biz-section { padding: 130px 0; }
+.biz-section { padding: 0 0 130px; }
 .biz-section:nth-child(even) { background: var(--cream-100); }
-.biz-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 70px; }
-.biz-head .big-en {
-  font-family: var(--font-en);
-  font-weight: 600;
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  color: var(--green-800);
-  opacity: 0.9;
-  line-height: 0.9;
-  letter-spacing: 0.01em;
+
+.biz-visual {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: clamp(340px, 42vw, 480px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 80px;
+  color: var(--white);
 }
-.biz-head p { font-size: 0.94rem; color: var(--ink-700); line-height: 2; }
+.biz-visual.dining { background: linear-gradient(120deg, var(--green-700) 0%, var(--green-950) 75%); }
+.biz-visual.entertainment { background: linear-gradient(120deg, var(--green-950) 0%, #050f0a 80%); }
+.biz-visual.hr { background: linear-gradient(120deg, var(--green-600) 0%, var(--green-950) 80%); }
+.biz-visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 75% 40%, black, transparent 72%);
+}
+.biz-visual .visual-mark {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  width: 26vw; max-width: 320px; opacity: 0.14; pointer-events: none;
+}
+.biz-visual .visual-mark img { width: 100%; height: auto; display: block; }
+.biz-visual-inner {
+  position: relative; z-index: 1;
+  width: 100%;
+}
+.biz-visual .num {
+  font-family: var(--font-en);
+  font-size: 0.86rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-400);
+  display: block;
+  margin-bottom: 18px;
+}
+.biz-visual .label {
+  font-family: var(--font-impact);
+  font-weight: 400;
+  font-size: clamp(3.4rem, 10vw, 8.5rem);
+  line-height: 0.85;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  text-shadow: 0 10px 50px rgba(0,0,0,.4);
+}
+.biz-visual .label-jp {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--gold-400);
+  margin-top: 14px;
+  letter-spacing: 0.08em;
+}
+
+.biz-intro { max-width: 660px; margin-bottom: 70px; }
+.biz-intro p { font-size: 0.98rem; color: var(--ink-700); line-height: 2; margin-top: 20px; }
 
 .brand-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
 .brand-card {
@@ -610,12 +705,12 @@ a.news-item:hover { padding-left: 12px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .pillars { grid-template-columns: 1fr; }
+  .pillar-card { grid-template-columns: 1fr; padding: 40px 32px; min-height: unset; gap: 20px; }
   .brand-row { grid-template-columns: repeat(2, 1fr); }
   .brand-cell:nth-child(3) { border-left: none; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
-  .biz-head { grid-template-columns: 1fr; }
+  .biz-visual { height: clamp(280px, 62vw, 380px); }
   .brand-cards { grid-template-columns: 1fr; }
   .brand-card.solna { grid-column: span 1; grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
