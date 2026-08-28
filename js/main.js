@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
 
@@ -44,4 +44,41 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
-});
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bgLayers = [...document.querySelectorAll('.hero, .page-hero, .biz-visual, .contact-info-card')]
+    .filter(el => el.classList.contains('has-photo'));
+  const imgLayers = [...document.querySelectorAll('[data-parallax] > img')];
+
+  if (!reduceMotion && (bgLayers.length || imgLayers.length)) {
+    let ticking = false;
+    const vh = () => window.innerHeight;
+
+    const update = () => {
+      bgLayers.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const progress = (rect.top + rect.height / 2 - vh() / 2) / vh();
+        const pos = 50 + progress * 18;
+        el.style.backgroundPosition = `center ${pos}%`;
+      });
+      imgLayers.forEach(img => {
+        const rect = img.parentElement.getBoundingClientRect();
+        const progress = (rect.top + rect.height / 2 - vh() / 2) / vh();
+        const offset = progress * 40;
+        img.style.transform = `translateY(${offset}px) scale(1.15)`;
+      });
+      ticking = false;
+    };
+
+    const onParallaxScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+    window.addEventListener('resize', onParallaxScroll);
+  }
+})();
