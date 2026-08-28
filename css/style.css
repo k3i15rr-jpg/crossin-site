@@ -233,6 +233,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--white);
   overflow: hidden;
   padding-top: 110px;
+  background-size: cover;
+  background-position: center 30%;
+}
+.hero.has-photo::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(9,26,18,.95) 0%, rgba(9,26,18,.78) 38%, rgba(9,26,18,.5) 65%, rgba(9,26,18,.65) 100%);
+  z-index: 0;
 }
 .hero::after {
   content: "";
@@ -388,6 +396,63 @@ section { position: relative; }
 }
 
 /* ---------- Business Cards (index teaser) ---------- */
+/* ---------- Split photo/text business panels (jillion-style) ---------- */
+.jl-panels { display: flex; flex-direction: column; }
+.jl-panel {
+  display: flex;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: clamp(360px, 46vw, 560px);
+}
+.jl-panel .jl-photo { flex: 0 0 56%; position: relative; overflow: hidden; }
+.jl-panel .jl-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.jl-panel .jl-photo.no-photo {
+  background: linear-gradient(120deg, var(--green-600) 0%, var(--green-950) 85%);
+  display: flex; align-items: center; justify-content: center;
+}
+.jl-panel .jl-photo.no-photo .mark-lg { width: 34%; height: auto; opacity: 0.5; }
+.jl-panel .jl-text {
+  flex: 1;
+  background: var(--green-950);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.jl-panel .jl-text .num {
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-400);
+  margin-bottom: 20px;
+}
+.jl-panel .jl-text .label {
+  font-family: var(--font-impact);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.jl-panel .jl-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold-400);
+  margin-bottom: 18px;
+}
+.jl-panel .jl-text p { font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.9; margin-bottom: 26px; }
+.jl-panel .jl-text .btn-line { align-self: flex-start; color: var(--gold-400); }
+.jl-panel .jl-text .mark {
+  position: absolute; right: -10%; bottom: -14%;
+  width: 44%; opacity: 0.08; pointer-events: none;
+}
+.jl-panel .jl-text .mark img { width: 100%; height: auto; display: block; }
+.jl-panel.reverse { flex-direction: row-reverse; }
+
 .pillars { display: flex; flex-direction: column; gap: 22px; }
 .pillar-card {
   position: relative;
@@ -727,6 +792,9 @@ a.news-item:hover { padding-left: 12px; }
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .pillar-card { grid-template-columns: 1fr; padding: 40px 32px; min-height: unset; gap: 20px; }
+  .jl-panel, .jl-panel.reverse { flex-direction: column; min-height: unset; }
+  .jl-panel .jl-photo { height: 280px; }
+  .jl-panel .jl-text { padding: 40px 32px; }
   .brand-row { grid-template-columns: repeat(2, 1fr); }
   .brand-cell:nth-child(3) { border-left: none; }
   .footer-top { grid-template-columns: 1fr 1fr; }
