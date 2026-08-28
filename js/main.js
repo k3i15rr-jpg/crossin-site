@@ -46,8 +46,10 @@ window.addEventListener('load', () => {
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const bgLayers = [...document.querySelectorAll('.hero, .page-hero, .biz-visual, .contact-info-card')]
-    .filter(el => el.classList.contains('has-photo'));
+  const bgLayers = [
+    ...document.querySelectorAll('.hero-slide'),
+    ...[...document.querySelectorAll('.page-hero, .biz-visual, .contact-info-card')].filter(el => el.classList.contains('has-photo'))
+  ];
   const imgLayers = [...document.querySelectorAll('[data-parallax] > img')];
 
   if (!reduceMotion && (bgLayers.length || imgLayers.length)) {
