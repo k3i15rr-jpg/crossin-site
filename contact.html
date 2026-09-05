@@ -79,7 +79,14 @@
       <div class="reveal reveal-delay-1">
         <p class="eyebrow">FORM</p>
         <h2 class="section-title" style="margin-bottom:10px;">お問い合わせフォーム</h2>
-        <p style="color:var(--ink-700); font-size:0.86rem; margin-bottom:34px;">送信ボタンを押すと、入力内容をもとにメールソフトが起動します。内容をご確認の上、送信してください。</p>
+        <p style="color:var(--ink-700); font-size:0.86rem; margin-bottom:34px;">必要事項をご入力の上、送信してください。担当者に内容が届き、確認後にご連絡いたします。</p>
+
+        <p id="contact-success" hidden style="background:var(--cream-100); border-radius:12px; padding:20px 22px; font-size:0.9rem; color:var(--green-800); margin-bottom:26px;">
+          お問い合わせありがとうございます。内容を送信しました。担当者より改めてご連絡いたします。
+        </p>
+        <p id="contact-error" hidden style="background:#fbeceb; border-radius:12px; padding:20px 22px; font-size:0.9rem; color:#a33; margin-bottom:26px;">
+          送信に失敗しました。お手数ですが、<a href="mailto:syunya@clossin.co.jp" style="text-decoration:underline;">syunya@clossin.co.jp</a> まで直接ご連絡ください。
+        </p>
 
         <form id="contact-form">
           <div class="form-group">
@@ -160,18 +167,35 @@
 
 <script src="js/main.js"></script>
 <script>
+  const CONTACT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx6gqAuZG46_D0HbtZgppbCFUmB5IFHAzH-XACYpyc7irr5iHmgrELBehv0YscWIGOYBQ/exec';
+
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    const f = e.target;
-    const subject = encodeURIComponent('【CROSSIN】お問い合わせ（' + f.category.value + '）');
-    const body = encodeURIComponent(
-      'お名前: ' + f.name.value + '\n' +
-      '会社名・店舗名: ' + f.company.value + '\n' +
-      'メールアドレス: ' + f.email.value + '\n' +
-      '種別: ' + f.category.value + '\n\n' +
-      f.message.value
-    );
-    window.location.href = 'mailto:syunya@clossin.co.jp?subject=' + subject + '&body=' + body;
+    const form = e.target;
+    const successEl = document.getElementById('contact-success');
+    const errorEl = document.getElementById('contact-error');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    successEl.hidden = true;
+    errorEl.hidden = true;
+    submitBtn.disabled = true;
+
+    fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new FormData(form)
+    })
+      .then(() => {
+        successEl.hidden = false;
+        form.reset();
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(() => {
+        errorEl.hidden = false;
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
   });
 </script>
 </body>
