@@ -88,26 +88,38 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .preloader-inner { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.preloader-mark-row { display: flex; align-items: center; gap: 16px; }
 .preloader-mark { width: 72px; height: 72px; position: relative; }
 .preloader-mark img {
   width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
   animation: preloaderPulse 1.8s ease-in-out infinite;
 }
-.preloader-mark::before {
-  content: "";
-  position: absolute; inset: -14px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: var(--gold-500);
-  border-right-color: var(--gold-500);
-  animation: preloaderSpin 1.1s linear infinite;
+.preloader-curve { overflow: visible; }
+.preloader-curve path {
+  fill: none;
+  stroke: var(--gold-500);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.preloader-curve-top {
+  transform-origin: 12px 20px;
+  animation: preloaderCurveTop 1.8s ease-in-out infinite;
+}
+.preloader-curve-bottom {
+  transform-origin: 12px 20px;
+  animation: preloaderCurveBottom 1.8s ease-in-out infinite;
 }
 @keyframes preloaderPulse {
   0%, 100% { opacity: 0.88; transform: scale(0.96); }
   50% { opacity: 1; transform: scale(1.04); }
 }
-@keyframes preloaderSpin {
-  to { transform: rotate(360deg); }
+@keyframes preloaderCurveTop {
+  0%, 100% { transform: translateY(0); opacity: .45; }
+  50% { transform: translateY(-9px); opacity: 1; }
+}
+@keyframes preloaderCurveBottom {
+  0%, 100% { transform: translateY(0); opacity: .45; }
+  50% { transform: translateY(9px); opacity: 1; }
 }
 .preloader-word {
   font-family: var(--font-en);
@@ -124,7 +136,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (prefers-reduced-motion: reduce) {
   .preloader-mark img { animation: none; }
-  .preloader-mark::before { animation: none; border-top-color: rgba(201,168,118,.4); border-right-color: rgba(201,168,118,.4); }
+  .preloader-curve-top, .preloader-curve-bottom { animation: none; opacity: .8; }
   .preloader-word { animation: none; opacity: 1; }
 }
 
