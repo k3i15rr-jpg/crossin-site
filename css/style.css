@@ -100,26 +100,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   stroke: var(--gold-500);
   stroke-width: 2;
   stroke-linecap: round;
+  stroke-dasharray: 24;
 }
 .preloader-curve-top {
-  transform-origin: 12px 20px;
-  animation: preloaderCurveTop 1.8s ease-in-out infinite;
+  animation: preloaderCurveDraw 1.8s ease-in-out infinite;
 }
 .preloader-curve-bottom {
-  transform-origin: 12px 20px;
-  animation: preloaderCurveBottom 1.8s ease-in-out infinite;
+  animation: preloaderCurveDraw 1.8s ease-in-out infinite;
 }
 @keyframes preloaderPulse {
   0%, 100% { opacity: 0.88; transform: scale(0.96); }
   50% { opacity: 1; transform: scale(1.04); }
 }
-@keyframes preloaderCurveTop {
-  0%, 100% { transform: translateY(0); opacity: .45; }
-  50% { transform: translateY(-9px); opacity: 1; }
-}
-@keyframes preloaderCurveBottom {
-  0%, 100% { transform: translateY(0); opacity: .45; }
-  50% { transform: translateY(9px); opacity: 1; }
+@keyframes preloaderCurveDraw {
+  0% { stroke-dashoffset: 24; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -24; }
 }
 .preloader-word {
   font-family: var(--font-en);
