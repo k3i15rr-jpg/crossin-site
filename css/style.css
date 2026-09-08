@@ -125,12 +125,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   animation: preloaderLetter 1.6s ease-in-out infinite;
 }
 @keyframes preloaderLetter {
-  0%, 100% { opacity: .15; transform: translateY(4px); }
-  50% { opacity: 1; transform: translateY(0); }
+  0%, 100% { opacity: .15; }
+  50% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .preloader-mark-top, .preloader-mark-bottom { animation: none; opacity: 1; }
-  .preloader-letter { animation: none; opacity: 1; transform: none; }
+  .preloader-letter { animation: none; opacity: 1; }
 }
 
 /* ---------- Header ---------- */
