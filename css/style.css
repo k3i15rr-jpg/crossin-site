@@ -97,11 +97,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   object-fit: contain;
 }
 .preloader-mark-top {
-  clip-path: inset(0 0 50% 0);
+  clip-path: url(#preloader-clip-top);
   animation: preloaderMarkOpenTop 1.8s ease-in-out infinite;
 }
 .preloader-mark-bottom {
-  clip-path: inset(50% 0 0 0);
+  clip-path: url(#preloader-clip-bottom);
   animation: preloaderMarkOpenBottom 1.8s ease-in-out infinite;
 }
 @keyframes preloaderMarkOpenTop {
