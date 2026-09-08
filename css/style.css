@@ -98,19 +98,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .preloader-mark-top {
   clip-path: url(#preloader-clip-top);
-  animation: preloaderMarkOpenTop 1.8s ease-in-out infinite;
+  transform: translateY(0);
+  transition: transform .6s var(--ease), opacity .6s var(--ease);
 }
 .preloader-mark-bottom {
   clip-path: url(#preloader-clip-bottom);
-  animation: preloaderMarkOpenBottom 1.8s ease-in-out infinite;
+  transform: translateY(0);
+  transition: transform .6s var(--ease), opacity .6s var(--ease);
 }
-@keyframes preloaderMarkOpenTop {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(-11px); opacity: .75; }
+.preloader.is-hidden .preloader-mark-top {
+  transform: translateY(-16px);
+  opacity: .6;
 }
-@keyframes preloaderMarkOpenBottom {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(11px); opacity: .75; }
+.preloader.is-hidden .preloader-mark-bottom {
+  transform: translateY(16px);
+  opacity: .6;
 }
 .preloader-word {
   display: inline-flex;
@@ -129,7 +131,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   50% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .preloader-mark-top, .preloader-mark-bottom { animation: none; opacity: 1; }
+  .preloader-mark-top, .preloader-mark-bottom { transition: none; }
   .preloader-letter { animation: none; opacity: 1; }
 }
 
