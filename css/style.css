@@ -113,21 +113,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   50% { transform: translateY(11px); opacity: .75; }
 }
 .preloader-word {
+  display: inline-flex;
   font-family: var(--font-en);
   font-size: 0.8rem;
-  letter-spacing: 0.36em;
-  color: rgba(255,255,255,0.6);
-  opacity: 0;
-  animation: preloaderWord 1.8s ease forwards;
+  gap: 0.36em;
+  color: rgba(255,255,255,0.9);
 }
-@keyframes preloaderWord {
-  0% { opacity: 0; transform: translateY(6px); }
-  40% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 1; }
+.preloader-letter {
+  display: inline-block;
+  opacity: .15;
+  animation: preloaderLetter 1.6s ease-in-out infinite;
+}
+@keyframes preloaderLetter {
+  0%, 100% { opacity: .15; transform: translateY(4px); }
+  50% { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
   .preloader-mark-top, .preloader-mark-bottom { animation: none; opacity: 1; }
-  .preloader-word { animation: none; opacity: 1; }
+  .preloader-letter { animation: none; opacity: 1; transform: none; }
 }
 
 /* ---------- Header ---------- */
