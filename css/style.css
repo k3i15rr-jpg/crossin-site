@@ -88,34 +88,29 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .preloader-inner { display: flex; flex-direction: column; align-items: center; gap: 26px; }
-.preloader-mark-row { display: flex; align-items: center; gap: 16px; }
 .preloader-mark { width: 72px; height: 72px; position: relative; }
-.preloader-mark img {
-  width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
-  animation: preloaderPulse 1.8s ease-in-out infinite;
+.preloader-mark-half {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-.preloader-curve { overflow: visible; }
-.preloader-curve path {
-  fill: none;
-  stroke: var(--gold-500);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 24;
+.preloader-mark-top {
+  clip-path: inset(0 0 50% 0);
+  animation: preloaderMarkOpenTop 1.8s ease-in-out infinite;
 }
-.preloader-curve-top {
-  animation: preloaderCurveDraw 1.8s ease-in-out infinite;
+.preloader-mark-bottom {
+  clip-path: inset(50% 0 0 0);
+  animation: preloaderMarkOpenBottom 1.8s ease-in-out infinite;
 }
-.preloader-curve-bottom {
-  animation: preloaderCurveDraw 1.8s ease-in-out infinite;
+@keyframes preloaderMarkOpenTop {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-11px); opacity: .75; }
 }
-@keyframes preloaderPulse {
-  0%, 100% { opacity: 0.88; transform: scale(0.96); }
-  50% { opacity: 1; transform: scale(1.04); }
-}
-@keyframes preloaderCurveDraw {
-  0% { stroke-dashoffset: 24; }
-  50% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -24; }
+@keyframes preloaderMarkOpenBottom {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(11px); opacity: .75; }
 }
 .preloader-word {
   font-family: var(--font-en);
@@ -131,8 +126,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   100% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .preloader-mark img { animation: none; }
-  .preloader-curve-top, .preloader-curve-bottom { animation: none; opacity: .8; }
+  .preloader-mark-top, .preloader-mark-bottom { animation: none; opacity: 1; }
   .preloader-word { animation: none; opacity: 1; }
 }
 
