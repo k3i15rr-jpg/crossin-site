@@ -589,7 +589,7 @@ section { position: relative; }
 .brand-cell .logo-badge { height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; z-index: 1; }
 .brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; position: relative; z-index: 1; }
 .logo-badge-sento-pair { height: auto !important; gap: 8px; }
-.logo-badge-sento-pair img { height: 54px; width: 54px; object-fit: contain; border-radius: 10px; }
+.logo-badge-sento-pair img { height: 81px; width: 81px; object-fit: contain; border-radius: 10px; }
 
 /* ---------- News ---------- */
 .news-list { border-top: 1px solid var(--cream-100); }
