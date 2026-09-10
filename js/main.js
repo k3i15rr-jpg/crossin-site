@@ -10,7 +10,6 @@
     const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
     setTimeout(() => {
       preloader.classList.add('is-hidden');
-      setTimeout(() => preloader.remove(), 700);
     }, remaining);
   };
 
@@ -19,6 +18,35 @@
   } else {
     window.addEventListener('load', hidePreloader);
   }
+})();
+
+(function () {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest('a');
+    if (!a) return;
+    if (a.target && a.target !== '_self') return;
+    if (a.hasAttribute('download')) return;
+
+    let url;
+    try {
+      url = new URL(a.href, window.location.href);
+    } catch (err) {
+      return;
+    }
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+    if (url.origin !== window.location.origin) return;
+    if (url.pathname === window.location.pathname && url.search === window.location.search && url.hash) return;
+
+    e.preventDefault();
+    preloader.classList.remove('is-hidden');
+    setTimeout(() => {
+      window.location.href = url.href;
+    }, 650);
+  });
 })();
 
 (function () {
