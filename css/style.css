@@ -588,17 +588,8 @@ section { position: relative; }
 .brand-cell:hover { background: var(--cream-100); }
 .brand-cell .logo-badge { height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; z-index: 1; }
 .brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; position: relative; z-index: 1; }
-.brand-cell .cell-watermark {
-  position: absolute;
-  left: 0; right: 0; bottom: -14%;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
-}
-.brand-cell .cell-watermark img { width: 44%; height: auto; display: block; }
+.logo-badge-sento-pair { height: auto !important; gap: 8px; }
+.logo-badge-sento-pair img { height: 54px; width: 54px; object-fit: contain; border-radius: 10px; }
 
 /* ---------- News ---------- */
 .news-list { border-top: 1px solid var(--cream-100); }
