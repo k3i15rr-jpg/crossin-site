@@ -581,11 +581,24 @@ section { position: relative; }
   text-align: center;
   border-left: 1px solid var(--cream-100);
   transition: background .35s;
+  position: relative;
+  overflow: hidden;
 }
 .brand-cell:first-child { border-left: none; }
 .brand-cell:hover { background: var(--cream-100); }
-.brand-cell .logo-badge { height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-.brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; }
+.brand-cell .logo-badge { height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; z-index: 1; }
+.brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; position: relative; z-index: 1; }
+.brand-cell .cell-watermark {
+  position: absolute;
+  left: 0; right: 0; bottom: -14%;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.brand-cell .cell-watermark img { width: 44%; height: auto; display: block; }
 
 /* ---------- News ---------- */
 .news-list { border-top: 1px solid var(--cream-100); }
@@ -787,6 +800,8 @@ a.news-item:hover { padding-left: 12px; }
   padding: 36px;
   border: 1px solid var(--cream-100);
   transition: box-shadow .4s var(--ease), transform .4s var(--ease);
+  position: relative;
+  overflow: hidden;
 }
 .brand-card:hover { box-shadow: 0 24px 50px rgba(16,51,31,0.1); transform: translateY(-4px); }
 .brand-card .photo {
@@ -794,11 +809,23 @@ a.news-item:hover { padding-left: 12px; }
   border-radius: 20px 20px 0 0;
   overflow: hidden;
   aspect-ratio: 16/10;
+  position: relative;
+  z-index: 1;
 }
 .brand-card .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.brand-card .logo-badge { height: 56px; display: flex; align-items: center; margin-bottom: 22px; }
-.brand-card .desc { font-size: 0.88rem; color: var(--ink-700); margin-bottom: 24px; line-height: 1.9; }
-.brand-card .stores { border-top: 1px solid var(--cream-100); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.brand-card .logo-badge { height: 56px; display: flex; align-items: center; margin-bottom: 22px; position: relative; z-index: 1; }
+.brand-card .desc { font-size: 0.88rem; color: var(--ink-700); margin-bottom: 24px; line-height: 1.9; position: relative; z-index: 1; }
+.brand-card .stores { border-top: 1px solid var(--cream-100); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
+.brand-card .card-watermark {
+  position: absolute;
+  right: -8%;
+  bottom: -6%;
+  width: 52%;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+.brand-card .card-watermark img { width: 100%; height: auto; display: block; }
 .store-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .store-row .info { font-size: 0.82rem; color: var(--ink-700); line-height: 1.7; }
 .store-row .info .store-name { display: inline-block; font-size: 0.72rem; color: var(--green-800); background: var(--cream-100); padding: 3px 10px; border-radius: 999px; margin-bottom: 6px; }
