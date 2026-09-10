@@ -572,20 +572,26 @@ section { position: relative; }
 .brand-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--cream-100);
-  border-radius: 22px;
-  overflow: hidden;
+  gap: 20px;
 }
 .brand-cell {
+  display: block;
   padding: 40px 24px;
   text-align: center;
-  border-left: 1px solid var(--cream-100);
-  transition: background .35s;
+  background: var(--white);
+  border: 1px solid var(--cream-100);
+  border-radius: 18px;
+  transition: background .35s, box-shadow .4s var(--ease), transform .4s var(--ease);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
 }
-.brand-cell:first-child { border-left: none; }
-.brand-cell:hover { background: var(--cream-100); }
+.brand-cell:hover {
+  background: var(--cream-100);
+  box-shadow: 0 20px 44px rgba(16,51,31,0.1);
+  transform: translateY(-4px);
+}
 .brand-cell .logo-badge { height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; position: relative; z-index: 1; }
 .brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; position: relative; z-index: 1; }
 .logo-badge-sento-pair { height: auto !important; gap: 8px; }
@@ -959,7 +965,6 @@ a.news-item:hover { padding-left: 12px; }
   .jl-panel .jl-photo { height: 280px; }
   .jl-panel .jl-text { padding: 40px 32px; }
   .brand-row { grid-template-columns: repeat(2, 1fr); }
-  .brand-cell:nth-child(3) { border-left: none; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
   .biz-visual { height: clamp(280px, 62vw, 380px); }
