@@ -99,18 +99,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .preloader-mark-top {
   clip-path: url(#preloader-clip-top);
   transform: translateY(0);
-  transition: transform .6s var(--ease), opacity .6s var(--ease);
+  transition: transform .6s var(--ease);
+  animation: preloaderMarkSeq 1.6s ease-in-out infinite;
 }
 .preloader-mark-bottom {
   clip-path: url(#preloader-clip-bottom);
   transform: translateY(0);
-  transition: transform .6s var(--ease), opacity .6s var(--ease);
+  transition: transform .6s var(--ease);
+  animation: preloaderMarkSeq 1.6s ease-in-out infinite .4s;
+}
+@keyframes preloaderMarkSeq {
+  0%, 100% { opacity: .35; }
+  50% { opacity: 1; }
 }
 .preloader.is-hidden .preloader-mark-top {
+  animation: none;
   transform: translateY(-64px);
   opacity: .6;
 }
 .preloader.is-hidden .preloader-mark-bottom {
+  animation: none;
   transform: translateY(64px);
   opacity: .6;
 }
@@ -130,22 +138,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   0%, 100% { opacity: .15; }
   50% { opacity: 1; }
 }
-.preloader-line { display: flex; gap: 6px; }
-.preloader-line-seg {
-  width: 18px;
-  height: 2px;
-  background: var(--gold-500);
-  opacity: .15;
-  animation: preloaderLineSeg 1.8s ease-in-out infinite;
-}
-@keyframes preloaderLineSeg {
-  0%, 100% { opacity: .15; }
-  50% { opacity: 1; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .preloader-mark-top, .preloader-mark-bottom { transition: none; }
+  .preloader-mark-top, .preloader-mark-bottom { transition: none; animation: none; opacity: 1; }
   .preloader-letter { animation: none; opacity: 1; }
-  .preloader-line-seg { animation: none; opacity: 1; }
 }
 
 /* ---------- Header ---------- */
