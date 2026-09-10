@@ -88,7 +88,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .preloader-inner { display: flex; flex-direction: column; align-items: center; gap: 26px; }
-.preloader-mark { width: 72px; height: 72px; position: relative; }
+.preloader-mark { width: 144px; height: 144px; position: relative; }
 .preloader-mark-half {
   position: absolute;
   inset: 0;
@@ -107,11 +107,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: transform .6s var(--ease), opacity .6s var(--ease);
 }
 .preloader.is-hidden .preloader-mark-top {
-  transform: translateY(-16px);
+  transform: translateY(-32px);
   opacity: .6;
 }
 .preloader.is-hidden .preloader-mark-bottom {
-  transform: translateY(16px);
+  transform: translateY(32px);
   opacity: .6;
 }
 .preloader-word {
