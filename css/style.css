@@ -79,7 +79,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   justify-content: center;
   background: var(--green-950);
-  transition: opacity .6s var(--ease), visibility .6s var(--ease);
+  transition: opacity 1.4s var(--ease), visibility 1.4s var(--ease);
 }
 .preloader.is-hidden {
   opacity: 0;
@@ -99,12 +99,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .preloader-mark-top {
   clip-path: url(#preloader-clip-top);
   transform: translateY(0);
-  transition: transform .6s var(--ease), opacity .6s var(--ease);
+  transition: transform 1.4s var(--ease), opacity 1.4s var(--ease);
 }
 .preloader-mark-bottom {
   clip-path: url(#preloader-clip-bottom);
   transform: translateY(0);
-  transition: transform .6s var(--ease), opacity .6s var(--ease);
+  transition: transform 1.4s var(--ease), opacity 1.4s var(--ease);
 }
 .preloader-mark-swoosh {
   clip-path: url(#preloader-clip-swoosh);
