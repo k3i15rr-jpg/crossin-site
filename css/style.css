@@ -615,6 +615,8 @@ section { position: relative; }
 .brand-cell .tag { font-size: 0.72rem; color: var(--gold-600); letter-spacing: 0.1em; position: relative; z-index: 1; }
 .logo-badge-sento-pair { height: auto !important; gap: 8px; }
 .logo-badge-sento-pair img { height: 81px; width: 81px; object-fit: contain; border-radius: 10px; }
+.logo-badge-img { height: auto !important; }
+.logo-badge-img img { height: 81px; width: 81px; object-fit: contain; }
 
 /* ---------- News ---------- */
 .news-list { border-top: 1px solid var(--cream-100); }
