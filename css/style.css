@@ -112,6 +112,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   z-index: 2;
   clip-path: url(#preloader-clip-swoosh);
   transform: scale(1);
+  transition: opacity 1.4s var(--ease);
   animation: preloaderMarkSeq 1.6s ease-in-out infinite;
 }
 @keyframes preloaderMarkSeq {
@@ -129,7 +130,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .preloader.is-hidden .preloader-mark-swoosh {
   transform: scale(1.35);
   animation: none;
-  opacity: 1;
+  opacity: .6;
 }
 .preloader-word {
   display: inline-flex;
@@ -149,7 +150,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (prefers-reduced-motion: reduce) {
   .preloader-mark-top, .preloader-mark-bottom { transition: none; }
-  .preloader-mark-swoosh { animation: none; opacity: 1; }
+  .preloader-mark-swoosh { animation: none; transition: none; opacity: 1; }
   .preloader-letter { animation: none; opacity: 1; }
 }
 
