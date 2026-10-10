@@ -878,6 +878,7 @@ a.news-item:hover { padding-left: 12px; }
 
 /* logo badges (text-based, styled per brand) */
 .logo-sento { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem; color: var(--ink-900); letter-spacing: 0.04em; }
+.logo-sento .store-suffix { margin-left: 0.7em; font-size: 0.9rem; font-weight: 600; color: var(--gold-600); letter-spacing: 0.08em; }
 .logo-sento small { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.3em; color: var(--gold-600); }
 .logo-en-mono {
   width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink-900);
