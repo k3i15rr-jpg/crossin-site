@@ -885,7 +885,6 @@ a.news-item:hover { padding-left: 12px; }
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-style: italic; font-size: 1.2rem;
 }
-.logo-solna { font-family: var(--font-display); font-size: 1.9rem; font-style: italic; display: flex; align-items: center; gap: 10px; color: var(--ink-900); }
 
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
