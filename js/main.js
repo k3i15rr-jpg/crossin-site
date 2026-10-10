@@ -45,7 +45,7 @@
     preloader.classList.remove('is-hidden');
     setTimeout(() => {
       window.location.href = url.href;
-    }, 450);
+    }, 1450);
   });
 })();
 
