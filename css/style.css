@@ -631,7 +631,6 @@ section { position: relative; }
 .logo-badge-sento-pair img { height: 81px; width: 81px; object-fit: contain; border-radius: 10px; }
 .logo-badge-img { height: auto !important; }
 .logo-badge-img img { height: 81px; width: 81px; object-fit: contain; }
-.logo-badge-sr img { width: auto; max-width: 100%; }
 
 /* ---------- News ---------- */
 .news-list { border-top: 1px solid var(--cream-100); }
