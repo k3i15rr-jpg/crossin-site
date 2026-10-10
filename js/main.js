@@ -2,7 +2,7 @@
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
 
-  const MIN_DISPLAY_MS = 2600;
+  const MIN_DISPLAY_MS = 1600;
   const shownAt = Date.now();
 
   const hidePreloader = () => {
@@ -45,7 +45,7 @@
     preloader.classList.remove('is-hidden');
     setTimeout(() => {
       window.location.href = url.href;
-    }, 1450);
+    }, 450);
   });
 })();
 
