@@ -487,7 +487,7 @@ section { position: relative; }
   min-height: clamp(360px, 46vw, 560px);
 }
 .jl-panel .jl-photo { flex: 0 0 56%; position: relative; overflow: hidden; }
-.jl-panel .jl-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.jl-panel .jl-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .jl-panel .jl-photo.no-photo {
   background: linear-gradient(120deg, var(--green-600) 0%, var(--green-950) 85%);
   display: flex; align-items: center; justify-content: center;
@@ -999,7 +999,7 @@ a.news-item:hover { padding-left: 12px; }
   .pillar-card { grid-template-columns: 1fr; padding: 40px 32px; min-height: unset; gap: 20px; }
   .recruit-inner { grid-template-columns: 1fr; gap: 44px; }
   .jl-panel, .jl-panel.reverse { flex-direction: column; min-height: unset; }
-  .jl-panel .jl-photo { height: 280px; }
+  .jl-panel .jl-photo { flex: none; height: 280px; }
   .jl-panel .jl-text { padding: 40px 32px; }
   .brand-row { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr 1fr; }
