@@ -93,7 +93,7 @@
     ...document.querySelectorAll('.hero-slide'),
     ...[...document.querySelectorAll('.page-hero, .biz-visual, .contact-info-card')].filter(el => el.classList.contains('has-photo'))
   ];
-  const imgLayers = [...document.querySelectorAll('[data-parallax] > img')];
+  const imgLayers = [...document.querySelectorAll('[data-parallax] > img, [data-parallax] > video')];
 
   if (!reduceMotion && (bgLayers.length || imgLayers.length)) {
     let ticking = false;
